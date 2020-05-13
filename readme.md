@@ -1,0 +1,1 @@
+Working off of this tutorial: https://docs.expo.io/tutorial/text/
