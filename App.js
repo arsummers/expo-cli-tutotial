@@ -4,7 +4,12 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Heyo this thing is onnnn</Text>
+      <Text>
+        I think maybe I should start with a simple counter app, but perhaps I should start with the actual tutorial
+
+        To share a photo from your phone with a friend, just press the button below!
+      </Text>
     </View>
   );
 }
