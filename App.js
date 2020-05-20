@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import logo from './assets/logo.png'
 
 export default function App() {
@@ -8,12 +8,13 @@ export default function App() {
       <Text>Heyo this thing is onnnn</Text>
       <Image source={{ uri: "https://i.imgur.com/TkIrScD.png" }} style={styles.logo} />
       <Text style={styles.instructions}>
-        I think maybe I should start with a simple counter app, but perhaps I should start with the actual tutorial
-
-        This marks the day when VSCode decided to stop opening stuff. Think of it as a placeholder of sorts
-
-        To share a photo from your phone with a friend, just press the button below!
+      To share a photo from your phone with a friend, just press the button below!        
       </Text>
+      <TouchableOpacity
+        onPress = {() => alert('Hello world!')}
+        style = {styles.button}>
+          <Text style={styles.buttonText}>Pick a photo</Text>
+        </TouchableOpacity>
     </View>
   );
 }
@@ -34,5 +35,14 @@ const styles = StyleSheet.create({
     color: '#1a0136',
     fontSize: 18,
     marginHorizontal: 15,
+  }, 
+  button: {
+    backgroundColor: "blue",
+    padding: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: '#fff',
   }, 
 });
