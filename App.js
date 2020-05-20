@@ -1,8 +1,19 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import logo from './assets/logo.png'
 
 export default function App() {
+  let openImagePickerAsync = async ()=>{
+    let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+    if (permissionResult.granted == false){
+      alert("Permission to access camera roll is required!");
+      return;
+    }
+    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+    console.log(pickerResult);
+  }
   return (
     <View style={styles.container}>
       <Text>Heyo this thing is onnnn</Text>
@@ -11,7 +22,7 @@ export default function App() {
       To share a photo from your phone with a friend, just press the button below!        
       </Text>
       <TouchableOpacity
-        onPress = {() => alert('Hello world!')}
+        onPress = {openImagePickerAsync}
         style = {styles.button}>
           <Text style={styles.buttonText}>Pick a photo</Text>
         </TouchableOpacity>
