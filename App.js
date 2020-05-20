@@ -4,6 +4,8 @@ import * as ImagePicker from 'expo-image-picker';
 import logo from './assets/logo.png'
 
 export default function App() {
+  const [selectedImage, setSelectedImage] = React.useState(null);
+
   let openImagePickerAsync = async ()=>{
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
@@ -12,8 +14,22 @@ export default function App() {
       return;
     }
     let pickerResult = await ImagePicker.launchImageLibraryAsync();
+    if (permissionResult.cancelled == true){
+      return;
+    }
+    setSelectedImage({  localUri: pickerResult.uri});
     console.log(pickerResult);
+  };
+  if (selectedImage !== null){
+    return (
+      <View style={styles.container}>
+        <Image 
+        source = {{ uri: selectedImage.localUri}}
+        style = {styles.thumbnail} />
+      </View>
+    );
   }
+
   return (
     <View style={styles.container}>
       <Text>Heyo this thing is onnnn</Text>
@@ -55,5 +71,10 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     color: '#fff',
-  }, 
+  },
+  thumbnail: {
+    width: 300,
+    height: 300,
+    resizeMode: "contain"
+  }
 });
